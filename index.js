@@ -16,6 +16,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // Rutas
+app.get("/", (req, res) => {
+  res.send("Listo el servidor para usar");
+});
+
 app.use("/api/sheet", sheetRoute);
 
 // Manejo de errores global
