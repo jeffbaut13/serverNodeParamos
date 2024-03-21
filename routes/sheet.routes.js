@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
       range: "A1",
       valueInputOption: "USER_ENTERED",
       requestBody: {
-        values: [[body.nombre, body.numero, body.email, body.mensaje]],
+        values: [[body.name, body.whatsapp, body.email, body.message]],
       },
     });
 
