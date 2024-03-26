@@ -7,7 +7,7 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     const body = req.body;
-    console.log(body);
+
     const auth = new google.auth.GoogleAuth({
       keyFile: process.env.GOOGLE_SHEET_KEY_FILE, // Path to your service account key file.
       scopes: ["https://www.googleapis.com/auth/spreadsheets"], // Scope for Google Sheets API.
