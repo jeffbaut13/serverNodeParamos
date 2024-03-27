@@ -1,3 +1,4 @@
+import axios from "axios";
 import express from "express";
 import { google } from "googleapis";
 
@@ -7,6 +8,30 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     const body = req.body;
+
+    /****get response */
+
+    // Crear el contacto en GetResponse
+    const getResponseData = {
+      name: body.name,
+      campaign: {
+        campaignId: "Z5bnZ",
+      },
+      email: body.email,
+      dayOfCycle: "0",
+    };
+
+    const getResponseResponse = await axios.post(
+      "https://api.getresponse.com/v3/contacts",
+      getResponseData,
+      {
+        headers: {
+          "X-Auth-Token": `api-key ${process.env.GETRESPONSE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    /******Gloogle sheet*/
 
     const auth = new google.auth.GoogleAuth({
       keyFile: process.env.GOOGLE_SHEET_KEY_FILE, // Path to your service account key file.
@@ -37,7 +62,8 @@ router.post("/", async (req, res) => {
     });
 
     res.status(200).json({
-      message: "Datos agregados a google sheet correctamente",
+      message:
+        "Datos agregados a google sheet correctamente y enviados a get response",
     });
   } catch (error) {
     // Manejo de errores
