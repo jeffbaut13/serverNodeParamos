@@ -67,7 +67,7 @@ router.post("/", async (req, res) => {
     });
   } catch (error) {
     // Manejo de errores
-    console.error("Error in API handler:", error);
+    //console.error("Error in API handler:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 });
