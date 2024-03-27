@@ -25,7 +25,7 @@ app.use("/api/sheet", sheetRoute);
 // Manejo de errores global
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).send("Error interno del servidor");
+  res.status(500).send("Error interno del servidor ver log de render");
 });
 
 // Iniciar el servidor con nodemon
